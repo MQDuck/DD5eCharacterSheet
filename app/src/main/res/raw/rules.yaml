@@ -1,0 +1,54 @@
+sources:
+  phb: &phb
+    name: "Player's Handbook"
+  dmg: &dmg
+    name: "Dungeon Master's Guide"
+  scag: &scag
+    name: "Sword Coast Adventurer's Guide"
+  volo: &volo
+    name: "Volo's Guide to Monsters"
+  xanathar: &xanathar
+    name: "Xanathar's Guide To Everything"
+  xanathar2: &xanathar2
+    name: "Xanathar's Lost Notes to Everything Else"
+  zendikar: &zendikar
+    name: "Plane Shift: Zendikar"
+
+races:
+  Dwarf:
+    source: *phb
+    traits:
+      con: 2
+    subraces:
+      Hill:
+        traits:
+          wis: 1
+          hp_per_level: 1
+        alt-names:
+          Hill: *scag
+      Mountain:
+        traits:
+          str: 2
+        alt-names:
+          Shield: *scag
+      Gray:
+        source: *scag
+        traits:
+          str: 1
+  Elf:
+    source: *phb
+    traits:
+      dex: 2
+    subraces:
+      High:
+        traits:
+          int: 1
+        alt-names:
+          Moon: *scag
+          Sun: *scag
+      Wood:
+        traits:
+          wis: 1
+      Dark:
+        traits:
+          cha: 1

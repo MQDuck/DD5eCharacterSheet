@@ -22,6 +22,6 @@
     <string name="title_character">Character</string>
     <string name="title_details">Details</string>
     <string name="title_spells">Spells</string>
-    <string name="new_character">New Character</string>
-    <string name="settings">Settings</string>
+    <string name="title_new_character">New Character</string>
+    <string name="title_settings">Settings</string>
 </resources>

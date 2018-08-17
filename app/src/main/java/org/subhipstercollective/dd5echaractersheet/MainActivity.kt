@@ -24,6 +24,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import kotlinx.android.synthetic.main.activity_main.*
+import org.yaml.snakeyaml.Yaml
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,6 +51,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        var yaml = Yaml();
+        var foo = yaml.load(resources.openRawResource(R.raw.rules))
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
