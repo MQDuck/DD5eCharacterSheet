@@ -53,4 +53,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation 'com.github.bmoliveira:snake-yaml:v1.18-android'
+
+//    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 }

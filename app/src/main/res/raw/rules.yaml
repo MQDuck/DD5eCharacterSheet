@@ -1,11 +1,33 @@
+source-sets:
+  core: &core 0
+  standard: &standard 1
+  setting: &setting 2
+
 sources:
-  phb: &phb "Player's Handbook"
-  dmg: &dmg "Dungeon Master's Guide"
-  scag: &scag "Sword Coast Adventurer's Guide"
-  volo: &volo "Volo's Guide to Monsters"
-  xanathar1: &xanathar1 "Xanathar's Guide To Everything"
-  xanathar2: &xanathar2 "Xanathar's Lost Notes to Everything Else"
-  zendikar: &zendikar "Plane Shift: Zendikar"
+  phb: &phb
+    name: "Player's Handbook"
+    code: 1
+    source-set: *core
+  scag: &scag
+    name: "Sword Coast Adventurer's Guide"
+    code: 2
+    source-set: *setting
+  volo: &volo
+    name: "Volo's Guide to Monsters"
+    code: 4
+    source-set: *standard
+  xanathar1: &xanathar1
+    name: "Xanathar's Guide To Everything"
+    code: 8
+    source-set: *standard
+  xanathar2: &xanathar2
+    name: "Xanathar's Lost Notes to Everything Else"
+    code: 16
+    source-set: *standard
+  zendikar: &zendikar
+    name: "Plane Shift: Zendikar"
+    code: 32
+    source-set: *setting
 
 races:
   Dwarf:
@@ -45,3 +67,110 @@ races:
       Dark:
         traits:
           cha: 1
+      Tajuru:
+        source: *zendikar
+        traits:
+          cha: 1
+      Joraga:
+        source: *zendikar
+        traits:
+          dex: 1
+      Mul Daya:
+        source: *zendikar
+        traits:
+          str: 1
+  Halfling:
+    source: *phb
+    traits:
+      dex: 2
+    subraces:
+      Lightfoot:
+        traits:
+          cha: 1
+      Stout:
+        traits:
+          con: 1
+        aliases:
+          Strongheart: *scag
+  Human:
+    source: *phb
+    traits:
+      str: 1
+      dex: 1
+      con: 1
+      int: 1
+      wis: 1
+      cha: 1
+  Dragonborn:
+    source: *phb
+    traits:
+      str: 2
+      cha: 1
+    subraces:
+      Black:
+      Blue:
+      Brass:
+      Bronze:
+      Copper:
+      Gold:
+      Green:
+      Red:
+      Silver:
+      White:
+  Gnome:
+    source: *phb
+    traits:
+      int: 2
+    subraces:
+      Forest:
+        traits:
+          dex: 1
+      Rock:
+        traits:
+          con: 1
+      Deep:
+        source: *scag
+        traits:
+          dex: 1
+  #Half-Elf:
+  Half-Orc:
+    source: *phb
+    traits:
+      str: 2
+      con: 1
+  Tiefling:
+    source: *phb
+    traits:
+      int: 1
+      cha: 2
+  Kor:
+    source: *zendikar
+    traits:
+      dex: 2
+      wis: 1
+  Merfolk:
+    source: *zendikar
+    traits:
+      cha: 1
+    subraces:
+      Emeria:
+        traits:
+          wis: 2
+      Ula:
+        traits:
+          int: 2
+      Cosi:
+        cha: 1
+        int: 1
+  Vampire:
+    source: *zendikar
+    traits:
+      int: 1
+      cha: 2
+  Goblin:
+    source: *zendikar
+    traits:
+      con: 2
+    subraces:
+      Grotag:
+      Tuktuk:

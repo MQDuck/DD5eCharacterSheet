@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.yaml.snakeyaml.Yaml
 
 class MainActivity : AppCompatActivity() {
+    lateinit var rules: LinkedHashMap<String?, Any>
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -52,13 +53,12 @@ class MainActivity : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
-        var yaml = Yaml();
-        var foo = yaml.load(resources.openRawResource(R.raw.rules))
+        rules = Yaml().load(resources.openRawResource(R.raw.rules)) as LinkedHashMap<String?, Any>
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         //return super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.options, menu)
-        return true;
+        return true
     }
 }
