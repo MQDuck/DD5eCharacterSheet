@@ -29,31 +29,40 @@ import org.yaml.snakeyaml.Yaml
 class MainActivity : AppCompatActivity() {
     lateinit var rules: LinkedHashMap<String?, Any>
 
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_character)
+                openFragment(MainFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                message.setText(R.string.title_details)
+                openFragment(DetailsFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_spells)
+                openFragment(SpellsFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
     }
 
+    private fun openFragment(fragment: MainActivityFragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
         rules = Yaml().load(resources.openRawResource(R.raw.rules)) as LinkedHashMap<String?, Any>
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        openFragment(MainFragment.newInstance())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
