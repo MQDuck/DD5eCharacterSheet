@@ -41,13 +41,6 @@ class CharacterFragment : CharacterSheetFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        ability_strength.name = "Strength"
-        ability_dexterity.name = "Dexterity"
-        ability_constitution.name = "Constitution"
-        ability_intelligence.name = "Intelligence"
-        ability_wisdom.name = "Wisdom"
-        ability_charisma.name = "Charisma"
-
         ability_strength.score = 18
         ability_dexterity.score = 14
         ability_constitution.score = 16
@@ -62,19 +55,15 @@ class CharacterFragment : CharacterSheetFragment() {
 }
 
 private class AbilityView @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
-    private lateinit var mcontext: Context
-
-    init {
-        inflate(getContext(), R.layout.view_ability, this)
-    }
-
     var score: Int
         get() = Integer.parseInt(ability_score.text.toString())
         set(value) {
             ability_score.text = value.toString()
-            ability_modifier.text = String.format("%+d", value/2 - 5)
+            ability_modifier.text = String.format("%+d", abilityModifier(value))
         }
 
     val modifier get() = Integer.parseInt(ability_modifier.text.toString())
@@ -84,6 +73,20 @@ private class AbilityView @JvmOverloads constructor(
         set(value) {
             ability_name.text = value
         }
+
+    init {
+        inflate(getContext(), R.layout.view_ability, this)
+
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.AbilityView)
+        val name = attributes.getString(R.styleable.AbilityView_name)
+        val score = attributes.getInt(R.styleable.AbilityView_score, Int.MIN_VALUE)
+        attributes.recycle()
+
+        if(name != null)
+            this.name = name
+        if(score != Int.MIN_VALUE)
+            this.score = score
+    }
 }
 
 //// TODO: Rename parameter arguments, choose names that match

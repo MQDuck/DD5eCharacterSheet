@@ -19,6 +19,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,32 +38,38 @@
         <org.subhipstercollective.dd5echaractersheet.AbilityView
             android:id="@+id/ability_strength"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:name="Strength" />
 
         <org.subhipstercollective.dd5echaractersheet.AbilityView
             android:id="@+id/ability_dexterity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:name="Dexterity" />
 
         <org.subhipstercollective.dd5echaractersheet.AbilityView
             android:id="@+id/ability_constitution"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:name="Constitution" />
 
         <org.subhipstercollective.dd5echaractersheet.AbilityView
             android:id="@+id/ability_intelligence"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:name="Intelligence" />
 
         <org.subhipstercollective.dd5echaractersheet.AbilityView
             android:id="@+id/ability_wisdom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:name="Wisdom" />
 
         <org.subhipstercollective.dd5echaractersheet.AbilityView
             android:id="@+id/ability_charisma"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:name="Charisma" />
     </LinearLayout>
 
     <LinearLayout
