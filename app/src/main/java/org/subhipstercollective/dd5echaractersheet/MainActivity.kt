@@ -29,11 +29,10 @@ import org.yaml.snakeyaml.Yaml
 class MainActivity : AppCompatActivity() {
     lateinit var rules: LinkedHashMap<String?, Any>
 
-
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                openFragment(MainFragment.newInstance())
+                openFragment(CharacterFragment.newInstance())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         false
     }
 
-    private fun openFragment(fragment: MainActivityFragment) {
+    private fun openFragment(fragment: CharacterSheetFragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
         transaction.addToBackStack(null)
@@ -59,10 +58,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        @Suppress("UNCHECKED_CAST")
         rules = Yaml().load(resources.openRawResource(R.raw.rules)) as LinkedHashMap<String?, Any>
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        openFragment(MainFragment.newInstance())
+        openFragment(CharacterFragment.newInstance())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

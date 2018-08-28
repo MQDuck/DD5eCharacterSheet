@@ -25,10 +25,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class DetailsFragment : MainActivityFragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+class DetailsFragment : CharacterSheetFragment() {
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 

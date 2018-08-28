@@ -19,19 +19,71 @@
 
 package org.subhipstercollective.dd5echaractersheet
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.fragment_character.*
+import kotlinx.android.synthetic.main.view_ability.view.*
 
-class MainFragment : MainActivityFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+class CharacterFragment : CharacterSheetFragment() {
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_character, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        ability_strength.name = "Strength"
+        ability_dexterity.name = "Dexterity"
+        ability_constitution.name = "Constitution"
+        ability_intelligence.name = "Intelligence"
+        ability_wisdom.name = "Wisdom"
+        ability_charisma.name = "Charisma"
+
+        ability_strength.score = 18
+        ability_dexterity.score = 14
+        ability_constitution.score = 16
+        ability_intelligence.score = 8
+        ability_wisdom.score = 12
+        ability_charisma.score = 10
     }
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = CharacterFragment()
     }
+}
+
+private class AbilityView @JvmOverloads constructor(
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : LinearLayout(context, attrs, defStyleAttr) {
+    private lateinit var mcontext: Context
+
+    init {
+        inflate(getContext(), R.layout.view_ability, this)
+    }
+
+    var score: Int
+        get() = Integer.parseInt(ability_score.text.toString())
+        set(value) {
+            ability_score.text = value.toString()
+            ability_modifier.text = String.format("%+d", value/2 - 5)
+        }
+
+    val modifier get() = Integer.parseInt(ability_modifier.text.toString())
+
+    var name: String
+        get() = ability_name.text.toString()
+        set(value) {
+            ability_name.text = value
+        }
 }
 
 //// TODO: Rename parameter arguments, choose names that match
@@ -42,11 +94,11 @@ class MainFragment : MainActivityFragment() {
 ///**
 // * A simple [Fragment] subclass.
 // * Activities that contain this fragment must implement the
-// * [MainFragment.OnFragmentInteractionListener] interface
+// * [CharacterFragment.OnFragmentInteractionListener] interface
 // * to handle interaction events.
 // *
 // */
-//class MainFragment : Fragment() {
+//class CharacterFragment : Fragment() {
 //    private var listener: OnFragmentInteractionListener? = null
 //
 //    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

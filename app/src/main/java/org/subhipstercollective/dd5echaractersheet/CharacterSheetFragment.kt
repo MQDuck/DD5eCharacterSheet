@@ -22,7 +22,7 @@ package org.subhipstercollective.dd5echaractersheet
 import android.content.Context
 import android.support.v4.app.Fragment
 
-abstract class MainActivityFragment : Fragment() {
+abstract class CharacterSheetFragment : Fragment() {
     protected var mainActivity: MainActivity? = null
     protected var rules: LinkedHashMap<String?, Any>? = null
 
@@ -39,5 +39,6 @@ abstract class MainActivityFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         mainActivity = null
+        rules = null
     }
 }

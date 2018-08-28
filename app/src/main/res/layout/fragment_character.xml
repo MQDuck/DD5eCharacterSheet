@@ -22,7 +22,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    tools:context=".CharacterFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -34,35 +34,35 @@
         android:layout_centerVertical="true"
         android:orientation="vertical">
 
-        <TextView
+        <org.subhipstercollective.dd5echaractersheet.AbilityView
+            android:id="@+id/ability_strength"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Strength" />
+            android:layout_height="wrap_content" />
 
-        <TextView
+        <org.subhipstercollective.dd5echaractersheet.AbilityView
+            android:id="@+id/ability_dexterity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dexterity" />
+            android:layout_height="wrap_content" />
 
-        <TextView
+        <org.subhipstercollective.dd5echaractersheet.AbilityView
+            android:id="@+id/ability_constitution"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Constitution" />
+            android:layout_height="wrap_content" />
 
-        <TextView
+        <org.subhipstercollective.dd5echaractersheet.AbilityView
+            android:id="@+id/ability_intelligence"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Intelligence" />
+            android:layout_height="wrap_content" />
 
-        <TextView
+        <org.subhipstercollective.dd5echaractersheet.AbilityView
+            android:id="@+id/ability_wisdom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wisdom" />
+            android:layout_height="wrap_content" />
 
-        <TextView
+        <org.subhipstercollective.dd5echaractersheet.AbilityView
+            android:id="@+id/ability_charisma"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Charisma" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
