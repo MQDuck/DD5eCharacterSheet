@@ -28,6 +28,7 @@ import org.yaml.snakeyaml.Yaml
 
 class MainActivity : AppCompatActivity() {
     lateinit var rules: LinkedHashMap<String?, Any>
+    var character = Character()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun openFragment(fragment: CharacterSheetFragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container, fragment)
+        transaction.replace(R.id.content, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
@@ -63,6 +64,16 @@ class MainActivity : AppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         openFragment(CharacterFragment.newInstance())
+
+        character.name = "Galur Moradar"
+        character.race = "Dwarf"
+        character.superclass = "Barbarian"
+        character.strength = 18
+        character.dexterity = 14
+        character.constitution = 16
+        character.intelligence = 8
+        character.wisdom = 12
+        character.charisma = 10
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

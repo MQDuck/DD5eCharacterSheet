@@ -24,13 +24,15 @@ import android.support.v4.app.Fragment
 
 abstract class CharacterSheetFragment : Fragment() {
     protected var mainActivity: MainActivity? = null
-    protected var rules: LinkedHashMap<String?, Any>? = null
+    protected lateinit var rules: LinkedHashMap<String?, Any>
+    protected lateinit var character: Character
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is MainActivity) {
             mainActivity = context
             rules = context.rules
+            character = context.character
         } else {
             throw RuntimeException("context must be a MainActivity")
         }
@@ -39,6 +41,5 @@ abstract class CharacterSheetFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         mainActivity = null
-        rules = null
     }
 }

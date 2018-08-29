@@ -41,12 +41,16 @@ class CharacterFragment : CharacterSheetFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        ability_strength.score = 18
-        ability_dexterity.score = 14
-        ability_constitution.score = 16
-        ability_intelligence.score = 8
-        ability_wisdom.score = 12
-        ability_charisma.score = 10
+        character_name.text = character.name
+        character_race.text = character.race
+        character_class.text = character.superclass
+
+        ability_strength.score = character.strength
+        ability_dexterity.score = character.dexterity
+        ability_constitution.score = character.constitution
+        ability_intelligence.score = character.intelligence
+        ability_wisdom.score = character.wisdom
+        ability_charisma.score = character.charisma
     }
 
     companion object {
@@ -63,7 +67,7 @@ private class AbilityView @JvmOverloads constructor(
         get() = Integer.parseInt(ability_score.text.toString())
         set(value) {
             ability_score.text = value.toString()
-            ability_modifier.text = String.format("%+d", abilityModifier(value))
+            ability_modifier.text = String.format("%+d", Character.abilityModifier(value))
         }
 
     val modifier get() = Integer.parseInt(ability_modifier.text.toString())
